@@ -1,0 +1,3 @@
+[submodule "src/pcklib/lodepng"]
+	path = src/pcklib/lodepng
+	url = https://github.com/lvandeve/lodepng.git
