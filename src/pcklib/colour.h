@@ -12,4 +12,5 @@ class Colour
 
 	bool isTransparent() const;
 	bool operator==(const Colour &other) const;
+	Colour(uint8_t r = 0, uint8_t g = 0, uint8_t b = 0, uint8_t a = 255);
 };

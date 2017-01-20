@@ -112,5 +112,7 @@ uint8_t Palette::getIndex(const Colour &c, PaletteConversion conversionMethod) c
 			return getPaletteIndexNoConversion(c, *this);
 		case PaletteConversion::LeastSquareDifference:
 			return getPaletteIndexLeastSquare(c, *this);
+		default:
+			throw std::runtime_error("Unknown palette conversion method");
 	}
 }
