@@ -13,7 +13,7 @@ static size_t writeUFOPCK(const PaletteImage &img, std::ostream &output)
 	int x = 0;
 	int y = 0;
 
-	//First find the first non-transparent pixel
+	// First find the first non-transparent pixel
 	while (img.getPixel(x, y) == 0)
 	{
 		x++;
@@ -24,17 +24,17 @@ static size_t writeUFOPCK(const PaletteImage &img, std::ostream &output)
 		}
 		if (y >= img.height)
 		{
-			//Completely empty image?
+			// Completely empty image?
 			break;
 		}
 	}
-	
-	//Check for Y skip being too large
+
+	// Check for Y skip being too large
 	if (y > 253)
 	{
 		y = 253;
 	}
-	//The first byte is the initial Y skip
+	// The first byte is the initial Y skip
 	writeByte(y, output, size);
 	for (; y < img.height; y++)
 	{
@@ -45,11 +45,11 @@ static size_t writeUFOPCK(const PaletteImage &img, std::ostream &output)
 			{
 				throw std::runtime_error("PaletteImage contains special value as index");
 			}
-			//TODO: RLE transparent pixels
+			// TODO: RLE transparent pixels
 			writeByte(index, output, size);
 		}
 	}
-	//Write end-of-image
+	// Write end-of-image
 	writeByte(0xff, output, size);
 	return size;
 }
